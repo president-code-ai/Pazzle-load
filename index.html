@@ -14,7 +14,7 @@
 </head>
 <body>
   <div class="page">
-    <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">▟</span> BLOCKS</span><nav aria-label="ゲームメニュー"><button id="open-map" class="text-button">島を選ぶ</button><button id="help" class="text-button">遊び方</button><details id="tools-menu" class="game-tools"><summary>その他</summary><div class="utility-controls"><button id="remove" disabled>持っている形を枠から外す</button><button id="reset">この島をやり直す</button><button id="example">お手本を見る</button><button id="password-button">パスワードで再開</button></div></details></nav></header>
+    <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">▟</span> BLOCKS</span><nav aria-label="ゲームメニュー"><button id="open-map" class="text-button">島を選ぶ</button><button id="help" class="text-button">遊び方</button><details id="tools-menu" class="game-tools"><summary>その他</summary><div class="utility-controls"><button id="reset">この島をやり直す</button><button id="example">お手本を見る</button><button id="password-button">パスワードで再開</button></div></details></nav></header>
     <main>
       <h1 class="sr-only">ブロックパズル</h1>
       <div class="game-layout">
@@ -35,7 +35,7 @@
             <div id="direction-controls" class="dpad" role="group" aria-label="十字キー。長押しで連続移動"><button class="pad-up" data-direction="0,-1" aria-label="上へ。長押しで連続移動">▲</button><button class="pad-left" data-direction="-1,0" aria-label="左へ。長押しで連続移動">◀</button><span class="pad-center" aria-hidden="true">●</span><button class="pad-right" data-direction="1,0" aria-label="右へ。長押しで連続移動">▶</button><button class="pad-down" data-direction="0,1" aria-label="下へ。長押しで連続移動">▼</button></div>
             <div class="ab-controls"><div class="piece-pager"><button id="previous-piece" aria-label="前の未配置ブロックを選ぶ">◀ 前の形</button><button id="next-piece" aria-label="次の未配置ブロックを選ぶ">次の形 ▶</button></div><div class="ab-buttons"><button id="rotate" class="action-button b-button" disabled aria-label="B：左回りに90度回転"><b>B</b><span>回転 ↶</span></button><button id="place" class="action-button a-button"><b>A</b><span id="action-label">選ぶ</span></button></div></div>
           </div>
-          <div class="transform-controls"><button id="flip-h" disabled><small>START</small> 左右反転</button><button id="flip-v" disabled><small>SELECT</small> 上下反転</button><button id="cancel" disabled>取消 <kbd>Esc</kbd></button><button id="undo" disabled>↩ 1手戻す <kbd>Z</kbd></button></div>
+          <div class="transform-controls"><button id="flip-h" disabled><small>START</small> 左右反転</button><button id="flip-v" disabled><small>SELECT</small> 上下反転</button><button id="remove" disabled title="持っている形をブロック一覧へ戻す">手元に戻す</button><button id="undo" disabled>1手戻す</button></div>
           <p id="status" class="status" role="status" aria-live="polite">まずはブロックを選びましょう。</p>
         </aside>
       </div>
