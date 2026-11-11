@@ -154,3 +154,5 @@ QRは公開済みのHTTPS URLへ直接つながります。PNGの復号一致と
 記録・画像はGit対象外 `.verification/sound-preview/`。実際に耳で聞いての音色・音量調整、実スマホ・Safariは未確認です。説明文の最終レビューと公開反映・照合はこの後に行います。
 
 両担当が修正後のコード・追加テスト・画像・説明文と配信照合を独立再確認し、指摘解消および追加の重大・高リスク指摘なしを報告。公開前の確認は完了しています。
+
+コミット `f1e421e3b0b084d6e52d95bf9c2d21336640e04e` をmainへプッシュ。Pages実行 `43084580494` は成功し、runtime6＋QR2の8ファイルはHTTP 200・原本SHA-256一致を確認しました。公開URLでも40項目すべてに成功し、要求先はPages内の期待6ファイルのみ、JS/CSPエラー0、生成波形の最大値約0.0237・OFF時0。公開前記録は `.verification/sound-preview/browser-results-local.json`、公開後は同フォルダーの `browser-results.json`。URL・QR・公開範囲は変更していません。
