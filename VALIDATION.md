@@ -132,3 +132,5 @@ QRは公開済みのHTTPS URLへ直接つながります。PNGの復号一致と
 結果・画像はGit対象外の `.verification/return-controls/`。実スマホ・Safariは未確認です。独立レビューの最終再確認と、公開反映・公開版照合はこの後に行います。
 
 両担当が最新版の本体・テスト・画像・説明文を独立再確認し、重大・高リスクの指摘なし。品質担当はコア11件を独立再実行し、Z/Esc/同じ形の再選択/Deleteの状態・履歴をVMでも検証しました。追加の実ブラウザ再検証でも、Zキーによる選択復元・配置Undoを含む32項目に成功しています。
+
+コミット `b8e609822cdb94caf035dc4f7a66ceac65278175` をmainへプッシュ。Pages実行 `43079970514` は成功し、配信7ファイルはHTTP 200・原本のSHA-256一致を確認。公開URLでも同じ32項目すべてに成功しました。要求先はPages配下の期待5ファイルのみ、JS/CSPエラー0。公開前の結果は `.verification/return-controls/browser-results-local.json`、公開後は同フォルダーの `browser-results.json`。URL・QR・公開範囲は変えていません。
