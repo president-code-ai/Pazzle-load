@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <meta name="description" content="42の島をめぐる、ゲームボーイ風のブロックパズル。ローカル・オフラインで遊べます。">
-  <title>冒険！パズルロード — ローカル再現版</title>
+  <title>BLOCKS — ブロックパズル</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='5'%20fill='%23f5f2e9'/%3E%3Cpath%20d='M4%2018h10V4h14v24H4z'%20fill='%23ae523f'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css">
   <script defer src="stages.js"></script>
@@ -14,39 +14,34 @@
 </head>
 <body>
   <div class="page">
-    <header class="masthead"><a class="brand" href="./index.html" aria-label="パズルロードの最初の画面"><span class="brand-mark" aria-hidden="true">▟</span> PUZZLE ROAD<span class="edition">LOCAL EDITION / 1990 → NOW</span></a><button id="help" class="text-button">遊び方 <span aria-hidden="true">↗</span></button></header>
+    <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">▟</span> BLOCKS</span><nav aria-label="ゲームメニュー"><button id="open-map" class="text-button">島を選ぶ</button><button id="help" class="text-button">遊び方</button></nav></header>
     <main>
-      <section class="intro"><div><p class="eyebrow">A LITTLE PUZZLE. A LONG ADVENTURE.</p><h1>冒険！<span>パズルロード</span><span class="title-dot">.</span></h1><p class="intro-copy">かたちを合わせて、島から島へ。<br class="mobile-break">42のパズルをめぐる、小さな冒険。</p></div><div class="edition-badge"><span>42</span><small>ISLANDS<br>TO EXPLORE</small></div></section>
+      <h1 class="sr-only">ブロックパズル</h1>
       <div class="game-layout">
         <section class="console" aria-label="パズル画面">
-          <div class="console-top"><span><i class="power-dot"></i> DOT MATRIX PUZZLE</span><span>01 — 42</span></div>
           <div class="lcd">
-            <div class="lcd-header"><div><span class="lcd-label">ISLAND</span><strong id="stage-number">01</strong><span class="stage-total">/ 42</span></div><div class="lcd-time"><span class="lcd-label">TIME</span><strong id="timer">00:00</strong></div></div>
+            <div class="lcd-header"><div><span class="lcd-label">島</span><strong id="stage-number">01</strong><span class="stage-total">/ 42</span></div><div class="lcd-time"><span class="lcd-label">時間</span><strong id="timer">00:00</strong></div></div>
             <div class="lcd-caption"><span id="stage-caption">はじまりの島</span><span id="piece-count">3 PIECES</span></div>
-            <div class="board-space"><div id="board" class="board" tabindex="0" role="group" aria-label="パズルの盤面。方向キーで移動、Enterで配置"></div></div>
-            <div class="lcd-footer"><span><b id="filled">00</b> / <span id="area">15</span> CELLS</span><span id="moves">00 MOVES</span></div>
+            <div class="board-space"><div id="board" class="board" tabindex="0" role="group" aria-label="パズルの盤面。タップや指で位置を調整し、置くボタンで確定。方向キーとEnterでも操作できます"></div></div>
+            <div class="lcd-footer"><span><b id="filled">00</b> / <span id="area">15</span> マス</span><span id="moves">00 手</span></div>
             <div id="clear-banner" class="clear-banner" hidden><span class="eyebrow">BRIDGE COMPLETE!</span><strong>GOOD!</strong><p id="clear-message"></p><div><button id="next-stage" class="primary">次の島へ →</button><button id="stay" class="subtle">配置を眺める</button></div></div>
           </div>
-          <div class="console-bottom"><span class="console-logo">PUZZLE ROAD <em>pocket</em></span><div class="speaker" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>
         </section>
         <aside class="toolbox">
-          <div class="panel-heading"><div><p class="eyebrow">YOUR BUILDING BLOCKS</p><h2>ブロックを選ぶ</h2></div><span id="remaining" class="pill">あと3個</span></div>
-          <p class="panel-copy">選んで、回して、ぴったりと。<br>枠をすき間なく埋めたらクリアです。</p>
+          <div class="panel-heading"><h2 id="selection-label">ブロックを選ぶ</h2><span id="remaining" class="pill">残り15マス</span></div>
+          <p class="tray-hint">ブロックを選択 <span>↔ 横にスワイプ</span></p>
           <div id="pieces" class="pieces" aria-label="使用できるブロック"></div>
-          <div class="selected-heading"><span id="selection-label">ブロックを選んでください</span><button id="cancel" class="text-button" disabled>選択を戻す <kbd>Esc</kbd></button></div>
-          <button id="remove" class="text-button" disabled>選択したブロックを枠から外す <kbd>Delete</kbd></button>
-          <div class="transform-controls"><button id="rotate" disabled><span aria-hidden="true">↶</span> 回転 <kbd>B</kbd></button><button id="flip-h" disabled><span aria-hidden="true">↔</span> 左右 <kbd>H</kbd></button><button id="flip-v" disabled><span aria-hidden="true">↕</span> 上下 <kbd>V</kbd></button></div>
-          <div id="direction-controls" class="direction-controls" aria-label="カーソル移動"><button data-direction="0,-1" aria-label="上へ">↑</button><div><button data-direction="-1,0" aria-label="左へ">←</button><button id="place" class="primary">置く <kbd>A</kbd></button><button data-direction="1,0" aria-label="右へ">→</button></div><button data-direction="0,1" aria-label="下へ">↓</button></div>
-          <div class="utility-controls"><button id="undo" disabled>↩ 1手戻す <kbd>Z</kbd></button><button id="reset">↻ やり直す</button><button id="example">✧ お手本</button></div>
+          <div class="transform-controls"><button id="rotate" disabled><span aria-hidden="true">↶</span> 回転 <kbd>B</kbd></button><button id="flip-h" disabled><span aria-hidden="true">↔</span> 左右 <kbd>H</kbd></button><button id="flip-v" disabled><span aria-hidden="true">↕</span> 上下 <kbd>V</kbd></button><button id="cancel" disabled>取消 <kbd>Esc</kbd></button></div>
+          <div id="direction-controls" class="direction-controls" aria-label="位置の微調整"><button data-direction="-1,0" aria-label="左へ">←</button><button data-direction="0,-1" aria-label="上へ">↑</button><button data-direction="0,1" aria-label="下へ">↓</button><button data-direction="1,0" aria-label="右へ">→</button><button id="place" class="primary" disabled>置く <kbd>A</kbd></button></div>
+          <div class="utility-controls"><button id="undo" disabled>↩ 1手戻す <kbd>Z</kbd></button><button id="remove" disabled>枠から外す <kbd>Delete</kbd></button><button id="reset">やり直す</button><button id="example">お手本</button></div>
           <p id="status" class="status" role="status" aria-live="polite">まずはブロックを選びましょう。</p>
-          <div class="little-note"><span aria-hidden="true">✦</span><p>急がなくて、大丈夫。<br><span>時間制限はありません。</span></p></div>
         </aside>
       </div>
-      <section class="journey"><div><p class="eyebrow">YOUR JOURNEY</p><h2>42の島への道</h2></div><div id="journey-dots" class="journey-dots" aria-hidden="true"></div><button id="open-map" class="text-button">島を選ぶ <span aria-hidden="true">→</span></button></section>
+      <section class="journey" aria-label="42の島の進行状況"><div id="journey-dots" class="journey-dots" aria-hidden="true"></div><span>時間制限なし</span></section>
       <div class="bottom-row"><p><kbd>↑ ↓ ← →</kbd> 移動 <span>·</span> <kbd>A / Enter</kbd> 置く <span>·</span> <kbd>B</kbd> 回転 <span>·</span> <kbd>1–9 / Tab</kbd> ブロック選択</p><button id="password-button" class="text-button">パスワードで再開 ↗</button></div>
     </main>
-    <footer><span>SMALL BLOCKS, BIG POSSIBILITIES.</span><p>『冒険！パズルロード』を参考にした非公式のローカル再現版。<br>オリジナル：ビック東海 / 1990　·　画像・音楽・ROMは使用していません。</p><button id="about" class="text-button">調査・再現について</button></footer>
+    <footer><span>非公式のブロックパズル · 原作の画像・音楽・ROM不使用</span><button id="about" class="text-button">調査・再現について</button></footer>
   </div>
-  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-head"><p class="eyebrow" id="modal-eyebrow">PUZZLE ROAD</p><button id="close-modal" class="close-button" aria-label="閉じる">×</button></div><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions" class="modal-actions"></div></dialog>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-head"><p class="eyebrow" id="modal-eyebrow">BLOCKS</p><button id="close-modal" class="close-button" aria-label="閉じる">×</button></div><h2 id="modal-title"></h2><div id="modal-body"></div><div id="modal-actions" class="modal-actions"></div></dialog>
 </body>
 </html>
