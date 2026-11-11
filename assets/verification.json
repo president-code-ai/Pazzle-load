@@ -1,0 +1,14 @@
+{
+  "url": "https://president-code-ai.github.io/Pazzle-load/",
+  "png": "Pazzle-load-QR.png",
+  "svg": "Pazzle-load-QR.svg",
+  "width": 984,
+  "height": 984,
+  "version": 4,
+  "errorCorrection": "M",
+  "mask": 2,
+  "quietZoneModules": 4,
+  "decodedFromPng": "https://president-code-ai.github.io/Pazzle-load/",
+  "pngCrc": "pass",
+  "reedSolomonSyndromes": "pass"
+}
