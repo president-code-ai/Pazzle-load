@@ -10,11 +10,12 @@
   <link rel="stylesheet" href="style.css">
   <script defer src="stages.js"></script>
   <script defer src="core.js"></script>
+  <script defer src="sound.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
   <div class="page">
-    <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">▟</span> BLOCKS</span><nav aria-label="ゲームメニュー"><button id="open-map" class="text-button">島を選ぶ</button><button id="help" class="text-button">遊び方</button><details id="tools-menu" class="game-tools"><summary>その他</summary><div class="utility-controls"><button id="reset">この島をやり直す</button><button id="example">お手本を見る</button><button id="password-button">パスワードで再開</button></div></details></nav></header>
+    <header class="masthead"><span class="brand"><span class="brand-mark" aria-hidden="true">▟</span> BLOCKS</span><nav aria-label="ゲームメニュー"><button id="sound-button" class="text-button sound-button" aria-pressed="false" aria-label="効果音をONにする">音OFF</button><button id="open-map" class="text-button">島を選ぶ</button><button id="help" class="text-button">遊び方</button><details id="tools-menu" class="game-tools"><summary>その他</summary><div class="utility-controls"><button id="reset">この島をやり直す</button><button id="example">お手本を見る</button><button id="password-button">パスワードで再開</button></div></details></nav></header>
     <main>
       <h1 class="sr-only">ブロックパズル</h1>
       <div class="game-layout">
@@ -22,7 +23,7 @@
           <div class="lcd">
             <div class="lcd-header"><div><span class="lcd-label">島</span><strong id="stage-number">01</strong><span class="stage-total">/ 42</span></div><div class="lcd-time"><span class="lcd-label">時間</span><strong id="timer">00:00</strong></div></div>
             <div class="lcd-caption"><span id="stage-caption">はじまりの島</span><span id="piece-count">3 PIECES</span></div>
-            <div class="board-space"><div id="board" class="board" tabindex="0" role="group" aria-label="パズルの盤面。タップや指で位置を調整し、置くボタンで確定。方向キーとEnterでも操作できます"></div></div>
+            <div class="board-space"><div id="board-scene" class="board-scene"><div id="board" class="board" tabindex="0" role="group" aria-label="パズルの盤面。薄い部分は枠の外です。十字キーで全体を枠へ合わせ、Aで配置できます"></div></div></div>
             <div class="lcd-footer"><span><b id="filled">00</b> / <span id="area">15</span> マス</span><span id="moves">00 手</span></div>
             <div id="clear-banner" class="clear-banner" hidden><span class="eyebrow">BRIDGE COMPLETE!</span><strong>GOOD!</strong><p id="clear-message"></p><div><button id="next-stage" class="primary">次の島へ →</button><button id="stay" class="subtle">配置を眺める</button></div></div>
           </div>
